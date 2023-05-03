@@ -333,6 +333,101 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Data for Name: authors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.authors (id, name) FROM stdin;
+1	author-1
+\.
+
+
+--
+-- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.books (id, author_id, name, cnt) FROM stdin;
+1	1	book-1-1	0
+2	1	book-1-2	0
+3	1	book-1-3	0
+\.
+
+
+--
+-- Data for Name: genres; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.genres (id, name) FROM stdin;
+1	genre-1
+2	genre-2
+3	genre-3
+4	genre-4
+\.
+
+
+--
+-- Data for Name: genres_books; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.genres_books (book_id, genre_id) FROM stdin;
+1	1
+1	2
+2	2
+\.
+
+
+--
+-- Data for Name: library_history; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.library_history (user_id, book_id, status, dt) FROM stdin;
+1	1	received	2023-04-29 23:16:46.90175
+1	2	received	2023-04-29 23:16:46.90175
+1	1	received	2023-04-29 23:17:30.85754
+1	1	returned	2023-04-29 23:17:45.978705
+2	1	received	2023-05-03 20:01:03.905409
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name) FROM stdin;
+1	user-1
+2	user-2
+3	user-3
+\.
+
+
+--
+-- Name: authors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.authors_id_seq', 2, true);
+
+
+--
+-- Name: books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.books_id_seq', 3, true);
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.genres_id_seq', 4, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+
+
+--
 -- Name: authors authors_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
